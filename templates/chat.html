@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-User Chat</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/chat.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('chat') }}">Chat Forum</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="video-container">
+      <video id="video-bg" autoplay muted loop>
+        <source
+          src="{{ url_for('static', filename='videos/bg.mp4') }}"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="chat-container">
+      <div class="chat-title" id="chaatify">Chat About Courses!</div>
+      <div class="chat-window" id="chat-window"></div>
+      <div class="input-container">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+        />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+  </body>
+</html>

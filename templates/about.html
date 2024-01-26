@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/styles.css') }}"
+    />
+    <title>How It Works?</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('chat') }}">Chat Forum</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="video-container">
+      <video autoplay muted loop id="video-bg">
+        <source
+          src="{{ url_for('static', filename='videos/bg.mp4') }}"
+          type="video/mp4"
+        />
+      </video>
+      <div class="homepage-container">
+        <div class="content">
+          <h1 id="abttopic">How it Works?</h1>
+          <br />
+          <p id="info">
+            The course recommendation system utilizes data from CSV files
+            sourced from Coursera, edX, Skillshare, and Udemy. The system
+            employs a TF-IDF (Term Frequency-Inverse Document Frequency) model
+            for Natural Language Processing (NLP) to analyze course content and
+            predict recommendations based on similarity. TF-IDF, a numerical
+            statistic, evaluates the importance of words in documents within a
+            corpus. In the context of the recommendation system, TF-IDF is
+            likely applied to understand and compare the content of courses
+            across the different platforms. The integration of the system is
+            facilitated by Flask, a Python web framework, while the user
+            interface is developed using HTML, CSS, and JavaScript. Users
+            interact with the system through a frontend interface, entering
+            preferences or queries, and the backend processes this information,
+            computes similarities using TF-IDF, and provides personalized course
+            recommendations from the diverse dataset.
+          </p>
+          <br />
+          <h3>Developed by</h3>
+
+          <!-- Photos of the developers -->
+          <div class="developer-photos">
+            <figure>
+              <img
+                src="{{ url_for('static', filename='images/sidd.jpeg') }}"
+                alt="Siddhanth Sridhar"
+                class="developer-photo"
+              />
+              <figcaption class="developer-caption" font-weight:bold>
+                Siddhanth Sridhar
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="{{ url_for('static', filename='images/shreyac.jpeg') }}"
+                alt="Shreya Chaurasia"
+                class="developer-photo"
+              />
+              <figcaption class="developer-caption">
+                Shreya Chaurasia
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="{{ url_for('static', filename='images/yashu.jpeg') }}"
+                alt="Yashwanth Reddy"
+                class="developer-photo"
+              />
+              <figcaption class="developer-caption">Yashwanth Reddy</figcaption>
+            </figure>
+          </div>
+
+          <style>
+            /* Add these styles for the developer photos */
+            .developer-photos {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 20px;
+            }
+
+            .developer-photo {
+              width: 150px; /* Adjust the width as needed */
+              height: 160px;
+              border-radius: 8px; /* Optional: Add rounded corners */
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+  </body>
+</html>

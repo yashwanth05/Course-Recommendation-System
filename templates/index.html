@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/styles.css') }}"
+    />
+    <title>Course Recommendation System</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="#">Home</a>
+      <a href="{{ url_for('chat') }}">Chat Forum</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class="video-container">
+      <video autoplay muted loop id="video-bg">
+        <source
+          src="{{ url_for('static', filename='videos/bg.mp4') }}"
+          type="video/mp4"
+        />
+      </video>
+      <div class="homepage-container">
+        <div class="content">
+          <h1 id="maintopic">Course Recommendation System</h1>
+          <p id="info">
+            Discover tailored courses based on your interests and keywords. Our
+            system recommends top skills, allowing you to choose from preferred
+            websites for a personalized learning experience.
+          </p>
+
+          <form
+            id="checklist"
+            onsubmit="return getRecommendations()"
+            method="post"
+          >
+            <label for="skills-input" id="interest"
+              >Enter your interests:</label
+            >
+            <input type="text" id="skills-input" name="skills" required />
+            <br />
+
+            <fieldset>
+              <legend>Recommend from:</legend>
+              <input
+                type="checkbox"
+                id="coursera"
+                name="platform"
+                value="coursera"
+              />
+              <label for="coursera">Coursera</label>
+
+              <input type="checkbox" id="udemy" name="platform" value="udemy" />
+              <label for="udemy">Udemy</label>
+
+              <input type="checkbox" id="edx" name="platform" value="edx" />
+              <label for="edx">edX</label>
+
+              <input
+                type="checkbox"
+                id="skillshare"
+                name="platform"
+                value="skillshare"
+              />
+              <label for="skillshare">Skillshare</label>
+            </fieldset>
+            <br />
+
+            <button type="submit" id="recb">Get Recommendations!</button>
+          </form>
+
+          <!-- Display recommendations here -->
+          <div id="recommendations-container"></div>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script>
+      function redirectToRecommendationsPage(recommendations, platform) {
+        // Convert recommendations data to a query string
+        const queryString = encodeURIComponent(JSON.stringify(recommendations));
+
+        // Redirect to the recommendations page with the query string
+        window.location.href = `/recommendations?platform=${platform}&data=${queryString}`;
+      }
+
+      function getRecommendations() {
+        var skillsInput = document.getElementById("skills-input").value.trim();
+        if (skillsInput === "") {
+          alert("Please enter your interests before getting recommendations!");
+          return false;
+        } else {
+          // Collect selected checkboxes
+          var platforms = [];
+          document
+            .querySelectorAll('input[name="platform"]:checked')
+            .forEach(function (checkbox) {
+              platforms.push(checkbox.value);
+            });
+
+          // Make a Fetch API request to Flask backend
+          const data = {
+            skills: skillsInput,
+            platforms: platforms,
+          };
+          console.log(data);
+
+          fetch("/get_recommendations", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Display recommendations on the website based on the second element
+              if (data.recommendations.length > 0) {
+                const secondElement = Object.keys(data.recommendations[0])[1];
+                console.log(secondElement);
+                switch (secondElement) {
+                  case "duration_numeric":
+                    displayRecommendations_udemy(data.recommendations);
+                    break;
+                  case "course":
+                    displayRecommendations_coursera(data.recommendations);
+                    break;
+                  case "duration_minutes":
+                    displayRecommendations_skillshare(data.recommendations);
+                    break;
+                  case "level":
+                    displayRecommendations_edx(data.recommendations);
+                    break;
+                  default:
+                    // Default case, display generic recommendations
+                    displayRecommendations_generic(data.recommendations);
+                }
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+
+          return false; // Prevent form submission
+        }
+      }
+      // function displayRecommendations_udemy(recommendations) {
+      //   var recommendationsContainer = document.getElementById(
+      //     "recommendations-container"
+      //   );
+      //   recommendationsContainer.innerHTML = "<h2>Recommended Courses</h2>";
+
+      //   recommendations.forEach(function (course, index) {
+      //     recommendationsContainer.innerHTML += `
+      //               <div class="course">
+      //                   <h3>${index + 1}. ${course.title}</h3>
+      //                   <p>Instructor: ${course.instructor}</p>
+      //                   <p>Rating: ${course.rating}</p>
+      //                   <p>Duration: ${course.duration}</p>
+      //                   <p>Level: ${course.level}</p>
+      //               </div>`;
+      //   });
+      // }
+      // function displayRecommendations_coursera(recommendations) {
+      //   var recommendationsContainer = document.getElementById(
+      //     "recommendations-container"
+      //   );
+      //   recommendationsContainer.innerHTML = "<h2>Recommended Courses</h2>";
+
+      //   recommendations.forEach(function (course, index) {
+      //     recommendationsContainer.innerHTML += `
+      //       <div class="course">
+      //           <h3>${index + 1}.  ${course.course}</h3>
+      //           <p>Partner: ${course.partner}</p>
+      //           <p>Skills: ${course.skills}</p>
+      //           <p>Rating: ${course.rating}</p>
+      //           <p>Review Count: ${course.reviewcount}</p>
+      //           <p>Level: ${course.level}</p>
+      //           <p>Duration: ${course.duration}</p>
+      //           <p>Certificate Type: ${course.certificatetype}</p>
+      //           <p>Credit Eligibility: ${course.crediteligibility}</p>
+      //       </div>`;
+      //   });
+      // }
+      // function displayRecommendations_skillshare(recommendations) {
+      //   var recommendationsContainer = document.getElementById(
+      //     "recommendations-container"
+      //   );
+      //   recommendationsContainer.innerHTML = "<h2>Recommended Courses</h2>";
+
+      //   recommendations.forEach(function (course, index) {
+      //     recommendationsContainer.innerHTML += `
+      //       <div class="course">
+      //           <h3>${index + 1}.  ${course.title}</h3>
+      //           <p>Duration: ${course.duration}</p>
+      //           <p>Instructor: ${course.instructor}</p>
+      //           <p>Students: ${course.students}</p>
+      //           <p>Link: ${course.link}</p>
+      //       </div>`;
+      //   });
+      // }
+      // function displayRecommendations_edx(recommendations) {
+      //   var recommendationsContainer = document.getElementById(
+      //     "recommendations-container"
+      //   );
+      //   recommendationsContainer.innerHTML = "<h2>Recommended Courses</h2>";
+
+      //   recommendations.forEach(function (course, index) {
+      //     recommendationsContainer.innerHTML += `
+      //       <div class="course">
+      //           <h3>${index + 1}.  ${course.title}</h3>
+      //           <p>Institution: ${course.institution}</p>
+      //           <p>Subject: ${course.subject}</p>
+      //           <p>Level: ${course.level}</p>
+      //           <p>Link: ${course.link}</p>
+      //       </div>`;
+      //   });
+      // }
+      function displayRecommendations_udemy(recommendations) {
+        redirectToRecommendationsPage(recommendations, "udemy");
+      }
+
+      function displayRecommendations_coursera(recommendations) {
+        redirectToRecommendationsPage(recommendations, "coursera");
+      }
+
+      function displayRecommendations_skillshare(recommendations) {
+        redirectToRecommendationsPage(recommendations, "skillshare");
+      }
+
+      function displayRecommendations_edx(recommendations) {
+        redirectToRecommendationsPage(recommendations, "edx");
+      }
+    </script>
+  </body>
+</html>

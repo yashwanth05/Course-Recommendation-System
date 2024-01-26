@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+}
+  
+  .video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Send the video to the background */
+  }
+  #chaatify{
+    color:#720f0f;
+    font-weight:900;
+  }
+  #video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Background color with transparency */
+  }
+  
+  .chat-title {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .chat-window {
+    height: 400px; /* Adjust the height as needed */
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: transparent; /* Make the background transparent */
+  }
+  
+  .input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  #message-input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .navbar {
+    background-color: rgb(80, 148, 190);
+    overflow: hidden;
+    padding: 10px;
+    z-index: 3;
+    font-weight: bold;
+   margin-bottom:0px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #100e0e;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: rgba(12, 10, 145, 0.5);
+    color: rgb(218, 219, 225);
+}
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+    .course-card {
+        width: 90%;
+    }
+}
