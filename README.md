@@ -12,16 +12,12 @@ This repository contains the source code for a course recommendation system that
 - Users interact with the system through a frontend interface where they can enter preferences or queries.
 - The backend processes this information, computes similarities using TF-IDF, and provides personalized course recommendations from the diverse dataset.
 
-## Usage
-1. Clone the repository: `git clone https://github.com/your-username/repo-name.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the Flask application: `python app.py`
-4. Access the application through a web browser.
+
 
 ## Contributors
-- Siddhanth Sridhar
-- JShreya Chaurasia
-- -Yahwanth Reddy
+- Siddhanth Sridhar(@sidd2305)
+- Shreya Chaurasia(@shreyyasiaa)
+- Yahwanth Reddy(@yashwanth05)
 
 
 Feel free to contribute and improve the system!
