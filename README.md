@@ -17,7 +17,7 @@ The dataset used in this project can be found on Kaggle: Multi-Platform Online C
 
 ## Screenshots
 ### Home Page
-1[Home Page](https://drive.google.com/file/u/9/d/1R9qs0gRa8ObKJOsS9wbHedsJYOpnmMYU/view?usp=drive_open)
+![Home Page](https://drive.google.com/file/u/9/d/1R9qs0gRa8ObKJOsS9wbHedsJYOpnmMYU/view?usp=drive_open)
 
 ### Recommendation Page
 2[Recommendation Page](link-to-recommendation-page-screenshot)
