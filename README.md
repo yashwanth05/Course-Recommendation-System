@@ -17,16 +17,16 @@ The dataset used in this project can be found on Kaggle: Multi-Platform Online C
 
 ## Screenshots
 ### Home Page
-![Home Page](https://drive.google.com/file/u/9/d/1R9qs0gRa8ObKJOsS9wbHedsJYOpnmMYU/view?usp=drive_open)
+![Home Page](home.jpeg)
 
 ### Recommendation Page
-2[Recommendation Page](link-to-recommendation-page-screenshot)
+2[Recommendation Page](recc.jpeg)
 
 ### Chat Page
-3[Chat Page](link-to-chat-page-screenshot)
+3[Chat Page](chat.jpeg)
 
 ### About Page
-4[About Page](link-to-about-page-screenshot)
+4[About Page](about.jpeg)
 
 Recommendation Page
 Chat Page
