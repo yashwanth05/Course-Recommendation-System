@@ -15,6 +15,23 @@ This repository contains the source code for a course recommendation system that
 ## Dataset
 The dataset used in this project can be found on Kaggle: Multi-Platform Online Courses Dataset-https://www.kaggle.com/datasets/zeesolver/multi-platform-online-courses-dataset
 
+## Screenshots
+### Home Page
+1[Home Page](https://drive.google.com/file/u/9/d/1R9qs0gRa8ObKJOsS9wbHedsJYOpnmMYU/view?usp=drive_open)
+
+### Recommendation Page
+2[Recommendation Page](link-to-recommendation-page-screenshot)
+
+### Chat Page
+3[Chat Page](link-to-chat-page-screenshot)
+
+### About Page
+4[About Page](link-to-about-page-screenshot)
+
+Recommendation Page
+Chat Page
+About Page
+
 ## Contributors
 - Siddhanth Sridhar(@sidd2305)
 - Shreya Chaurasia(@shreyyasiaa)
