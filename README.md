@@ -12,12 +12,13 @@ This repository contains the source code for a course recommendation system that
 - Users interact with the system through a frontend interface where they can enter preferences or queries.
 - The backend processes this information, computes similarities using TF-IDF, and provides personalized course recommendations from the diverse dataset.
 
-
+## Dataset
+The dataset used in this project can be found on Kaggle: Multi-Platform Online Courses Dataset-https://www.kaggle.com/datasets/zeesolver/multi-platform-online-courses-dataset
 
 ## Contributors
 - Siddhanth Sridhar(@sidd2305)
 - Shreya Chaurasia(@shreyyasiaa)
-- Yahwanth Reddy(@yashwanth05)
+- Yashwanth Reddy(@yashwanth05)
 
 
 Feel free to contribute and improve the system!
