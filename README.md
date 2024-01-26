@@ -28,9 +28,7 @@ The dataset used in this project can be found on Kaggle: Multi-Platform Online C
 ### About Page
 ![About Page](about.jpeg)
 
-Recommendation Page
-Chat Page
-About Page
+
 
 ## Contributors
 - Siddhanth Sridhar(@sidd2305)
