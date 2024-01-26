@@ -20,13 +20,13 @@ The dataset used in this project can be found on Kaggle: Multi-Platform Online C
 ![Home Page](home.jpeg)
 
 ### Recommendation Page
-2[Recommendation Page](recc.jpeg)
+![Recommendation Page](recc.jpeg)
 
 ### Chat Page
-3[Chat Page](chat.jpeg)
+![Chat Page](chat.jpeg)
 
 ### About Page
-4[About Page](about.jpeg)
+![About Page](about.jpeg)
 
 Recommendation Page
 Chat Page
