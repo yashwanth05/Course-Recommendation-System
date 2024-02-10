@@ -6,6 +6,8 @@ import re
 from flask_cors import CORS 
 from googlesearch import search
 import random
+from werkzeug.urls import url_quote_plus
+
 app = Flask(__name__)
 CORS(app)  
 
